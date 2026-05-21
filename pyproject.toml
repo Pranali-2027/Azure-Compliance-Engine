@@ -1,0 +1,39 @@
+[project]
+name = "video-compliance-auditor-backend"
+version = "0.1.0"
+description = "Backend for a RAG-based multimodal video compliance auditor using LangGraph and Azure."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "python-dotenv",
+    "pydantic",
+    "pydantic-settings",
+    "python-multipart",
+    "requests",
+    "pandas",
+    "pypdf",
+    "yt-dlp",
+
+    "langchain",
+    "langchain-community",
+    "langchain-openai",
+    "langgraph",
+    "langsmith",
+
+    "azure-identity",
+    "azure-storage-blob",
+    "azure-search-documents",
+    "azure-monitor-opentelemetry",
+    "opentelemetry-instrumentation-fastapi",
+
+    "redis",
+    "sqlalchemy",
+    "psycopg2-binary",
+    "streamlit",
+    "firecrawl-py"
+]
+
+[tool.uv]
+package = false

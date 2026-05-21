@@ -1,0 +1,51 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environment files and secrets
+.env
+.env.local
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Uploaded/generated files
+uploads/
+temp/
+tmp/
+videos/
+outputs/
+reports/
+data/
+artifacts/
+
+# Vector DB / indexes
+vector_store/
+chroma/
+faiss_index/
+.azure/
+.storage/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Build/package
+dist/
+build/
+*.egg-info/
