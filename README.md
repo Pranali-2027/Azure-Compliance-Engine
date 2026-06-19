@@ -1,79 +1,193 @@
-# Azure Compliance Engine — Multimodal RAG Video Compliance Auditor
+# 🎥 RAG-Based Multimodal Video Compliance Auditor using LangGraph
 
-## Overview
+An enterprise-grade Generative AI system that automatically audits YouTube advertisements, influencer marketing videos, and promotional content against regulatory and compliance policies using Retrieval-Augmented Generation (RAG), LangGraph orchestration, vector search, and Large Language Models.
 
-Azure Compliance Engine is a multimodal RAG-based video compliance auditing system that analyzes video content against compliance policy documents and generates structured PASS, WARNING, or FAIL reports with evidence, timestamps, matched policy rules, severity levels, and recommendations.
+The platform analyzes video content, retrieves relevant compliance rules from policy documents, detects potential violations, and generates structured audit reports with evidence-backed recommendations.
 
-The system uses Azure Video Indexer for transcript, OCR, keyword, timestamp, and metadata extraction; Azure AI Search for vector-based policy retrieval; Azure OpenAI for embeddings and reasoning; and LangGraph for orchestrating the compliance audit workflow.
+---
 
-## Problem Statement
+## 🚀 Business Problem
 
-Manual video compliance review is slow, inconsistent, and difficult to scale. Reviewers need to watch long videos, compare content against policy documents, identify violations, and prepare evidence-backed reports.
+Brands and regulatory teams review thousands of advertisements, influencer campaigns, and promotional videos every day.
 
-This project automates the compliance review workflow by extracting multimodal signals from videos, retrieving relevant policy rules, and generating explainable compliance decisions.
+Manual compliance review is:
 
-## Key Features
+* Time-consuming
+* Expensive
+* Difficult to scale
+* Prone to human errors
 
-- Video URL or MP4 input support
-- Temporary Azure Blob Storage upload workflow
-- Transcript, OCR, keyword, timestamp, and metadata extraction
-- Policy document retrieval using Azure AI Search
-- RAG-based compliance reasoning using Azure OpenAI
-- LangGraph-based workflow orchestration
-- PASS, WARNING, and FAIL compliance classification
-- Evidence-backed report generation
-- Matched policy rules with severity levels
-- Recommendations for remediation
-- Observability support using LangSmith and Azure Application Insights
+This project automates the compliance auditing process using AI, helping organizations identify misleading claims, missing disclosures, and policy violations before publishing content.
 
-## Tech Stack
+---
 
-- Python
-- FastAPI
-- LangGraph
-- Azure OpenAI
-- Azure AI Search
-- Azure Blob Storage
-- Azure Video Indexer
-- Azure Application Insights
-- LangSmith
-- RAG
-- Vector Search
+## 🏗️ System Architecture
 
-## System Architecture
+![Architecture](assets/architecture.png)
 
-```text
-Video URL / MP4 Upload
-        |
-        v
-FastAPI Backend
-        |
-        v
-Azure Blob Temporary Storage
-        |
-        v
-Azure Video Indexer
-        |
-        |-- Transcript
-        |-- OCR
-        |-- Keywords
-        |-- Timestamps
-        |-- Metadata
-        |
-        v
-LangGraph Compliance Workflow
-        |
-        |-- Extract Video Evidence
-        |-- Retrieve Relevant Policy Rules
-        |-- Compare Evidence with Policies
-        |-- Assign Severity
-        |-- Generate Recommendations
-        |
-        v
-Azure AI Search Vector Index
-        |
-        v
-Azure OpenAI Reasoning
-        |
-        v
-PASS / WARNING / FAIL Compliance Report
+### End-to-End Workflow
+
+1. User submits a YouTube video URL.
+2. FastAPI receives the audit request.
+3. LangGraph orchestrates the complete workflow.
+4. Video content is processed to extract:
+
+   * Transcript
+   * OCR Text
+   * Metadata
+   * Timestamps
+5. Compliance policy documents are indexed using embeddings.
+6. RAG retrieves the most relevant compliance rules.
+7. GPT-4o evaluates video content against policy guidelines.
+8. Violations are classified by category and severity.
+9. A structured compliance report is generated.
+10. LangSmith and Application Insights provide observability and monitoring.
+
+---
+
+## 📸 Project Demonstration
+
+### API Request
+
+The user submits a YouTube video URL through the FastAPI endpoint.
+
+![API Request](assets/api-request.png)
+
+---
+
+### Compliance Audit Result
+
+The system generates a structured compliance report highlighting detected violations and recommendations.
+
+![Compliance Result](assets/compliance-result.png)
+
+---
+
+## 📊 Sample Audit Output
+
+```json
+{
+  "status": "FAIL",
+  "final_report": "The video violates multiple compliance rules.",
+  "compliance_results": [
+    {
+      "category": "Claim Validation",
+      "severity": "CRITICAL"
+    },
+    {
+      "category": "Endorsement Disclosure",
+      "severity": "CRITICAL"
+    }
+  ]
+}
+```
+
+---
+
+## ⚙️ Technology Stack
+
+### Backend
+
+* Python
+* FastAPI
+* Uvicorn
+
+### Generative AI
+
+* GPT-4o
+* LangChain
+* LangGraph
+* Prompt Engineering
+
+### Retrieval Layer
+
+* RAG (Retrieval-Augmented Generation)
+* Embeddings
+* Vector Search
+* Azure AI Search (Architecture Ready)
+
+### Video Intelligence
+
+* Transcript Extraction
+* OCR Processing
+* Metadata Analysis
+* Azure Video Indexer (Architecture Ready)
+
+### Observability
+
+* LangSmith
+* Azure Application Insights
+
+### Cloud Services
+
+* Azure Blob Storage (Architecture Ready)
+* Azure OpenAI (Architecture Ready)
+
+---
+
+## 🚀 Key Features
+
+* Automated Video Compliance Auditing
+* RAG-Based Policy Retrieval
+* LangGraph Workflow Orchestration
+* OCR and Transcript Processing
+* Vector Similarity Search
+* Structured JSON Output
+* Severity-Based Violation Classification
+* Enterprise Monitoring & Observability
+* Scalable AI System Design
+
+---
+
+## 🧠 Core AI Concepts Demonstrated
+
+* Retrieval-Augmented Generation (RAG)
+* Embeddings
+* Vector Databases
+* Semantic Search
+* Prompt Engineering
+* Structured Output Generation
+* Hallucination Reduction
+* Workflow Orchestration
+* LLM Evaluation
+* AI Observability
+
+---
+
+## 📈 Future Enhancements
+
+* React Frontend Dashboard
+* Multi-Language Compliance Auditing
+* Real-Time Video Monitoring
+* Human-in-the-Loop Review System
+* Batch Video Processing
+* Full Azure Cloud Deployment
+* Compliance Analytics Dashboard
+
+---
+
+## 🎯 Skills Demonstrated
+
+* Generative AI Engineering
+* Enterprise AI Architecture
+* FastAPI Development
+* LangGraph Workflows
+* Retrieval Systems
+* Vector Databases
+* AI System Design
+* Observability & Monitoring
+* API Development
+* Cloud-Native AI Design
+
+---
+
+## 👩‍💻 Author
+
+### Pranali Dayanand Misal
+
+B.Tech – Electronics & Telecommunication Engineering
+Vishwakarma Institute of Information Technology (VIIT), Pune
+
+Aspiring AI Engineer | Generative AI Engineer | Machine Learning Enthusiast
+
+GitHub: https://github.com/Pranali-2027
