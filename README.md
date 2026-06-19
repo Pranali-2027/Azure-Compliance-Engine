@@ -109,7 +109,7 @@ Transcript Extraction      OCR Extraction
 
 The user submits a YouTube URL through the FastAPI endpoint.
 
-![API Request](assets/api_request.png)
+![API Request](assets/api-request.png)
 
 ---
 
