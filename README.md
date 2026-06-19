@@ -1,23 +1,29 @@
 # 🎥 RAG-Based Multimodal Video Compliance Auditor using LangGraph
 
-An enterprise-grade Generative AI system that automatically audits YouTube advertisements, influencer marketing videos, and promotional content against regulatory and compliance policies using Retrieval-Augmented Generation (RAG), LangGraph orchestration, vector search, and Large Language Models.
+An enterprise-grade Generative AI system that automatically audits YouTube advertisements, influencer marketing videos, and promotional content against regulatory and compliance policies using Retrieval-Augmented Generation (RAG), LangGraph orchestration, vector search, and Large Language Models (LLMs).
 
-The platform analyzes video content, retrieves relevant compliance rules from policy documents, detects potential violations, and generates structured audit reports with evidence-backed recommendations.
+The platform analyzes video content, retrieves relevant compliance rules from policy documents, identifies potential violations, and generates structured audit reports with evidence-backed recommendations.
 
 ---
 
 ## 🚀 Business Problem
 
-Brands and regulatory teams review thousands of advertisements, influencer campaigns, and promotional videos every day.
+Organizations publish thousands of:
+
+* YouTube Advertisements
+* Influencer Marketing Campaigns
+* Product Promotion Videos
+* Sponsored Content
+* Brand Awareness Campaigns
 
 Manual compliance review is:
 
 * Time-consuming
 * Expensive
 * Difficult to scale
-* Prone to human errors
+* Prone to human error
 
-This project automates the compliance auditing process using AI, helping organizations identify misleading claims, missing disclosures, and policy violations before publishing content.
+This project automates compliance auditing using AI, helping organizations identify misleading claims, missing disclosures, unsupported statements, and policy violations before content is published.
 
 ---
 
@@ -25,23 +31,75 @@ This project automates the compliance auditing process using AI, helping organiz
 
 ![Architecture](assets/architecture.png)
 
-### End-to-End Workflow
+### Architecture Overview
 
 1. User submits a YouTube video URL.
 2. FastAPI receives the audit request.
 3. LangGraph orchestrates the complete workflow.
-4. Video content is processed to extract:
-
-   * Transcript
-   * OCR Text
-   * Metadata
-   * Timestamps
+4. Video content is analyzed to extract transcript, OCR text, metadata, and timestamps.
 5. Compliance policy documents are indexed using embeddings.
 6. RAG retrieves the most relevant compliance rules.
-7. GPT-4o evaluates video content against policy guidelines.
+7. GPT-4o evaluates the video against policy guidelines.
 8. Violations are classified by category and severity.
-9. A structured compliance report is generated.
+9. A structured audit report is generated.
 10. LangSmith and Application Insights provide observability and monitoring.
+
+---
+
+## 🔄 Workflow Architecture
+
+```text
+User Video URL
+       │
+       ▼
+FastAPI Backend
+       │
+       ▼
+LangGraph Workflow
+       │
+       ▼
+Video Processing Layer
+       │
+ ┌──────────────┬──────────────┐
+ ▼                             ▼
+Transcript Extraction      OCR Extraction
+       │                     │
+       └──────────┬──────────┘
+                  ▼
+      Combined Video Context
+                  │
+                  ▼
+      Compliance Knowledge Base
+                  │
+                  ▼
+      Embeddings + Vector Search
+                  │
+                  ▼
+            RAG Retrieval
+                  │
+                  ▼
+      GPT-4o Compliance Auditor
+                  │
+                  ▼
+      Violation Detection Engine
+                  │
+                  ▼
+        PASS / WARNING / FAIL
+                  │
+                  ▼
+      Structured JSON Report
+```
+
+### Workflow Explanation
+
+1. User submits a YouTube video URL.
+2. Transcript and OCR content are extracted.
+3. Compliance PDFs are converted into embeddings and indexed.
+4. Relevant policy chunks are retrieved using vector search.
+5. GPT-4o compares video content with retrieved policies.
+6. Violations are identified and categorized.
+7. The system generates a structured compliance report.
+8. Results are returned through FastAPI APIs.
 
 ---
 
@@ -49,7 +107,7 @@ This project automates the compliance auditing process using AI, helping organiz
 
 ### API Request
 
-The user submits a YouTube video URL through the FastAPI endpoint.
+The user submits a YouTube URL through the FastAPI endpoint.
 
 ![API Request](assets/api-request.png)
 
@@ -72,11 +130,13 @@ The system generates a structured compliance report highlighting detected violat
   "compliance_results": [
     {
       "category": "Claim Validation",
-      "severity": "CRITICAL"
+      "severity": "CRITICAL",
+      "description": "Unsupported product claim detected."
     },
     {
       "category": "Endorsement Disclosure",
-      "severity": "CRITICAL"
+      "severity": "CRITICAL",
+      "description": "Sponsored disclosure missing."
     }
   ]
 }
@@ -101,7 +161,7 @@ The system generates a structured compliance report highlighting detected violat
 
 ### Retrieval Layer
 
-* RAG (Retrieval-Augmented Generation)
+* Retrieval-Augmented Generation (RAG)
 * Embeddings
 * Vector Search
 * Azure AI Search (Architecture Ready)
@@ -139,6 +199,19 @@ The system generates a structured compliance report highlighting detected violat
 
 ---
 
+## 🎯 Real-World Use Cases
+
+* Advertisement Compliance Review
+* Influencer Marketing Audits
+* Brand Safety Monitoring
+* Regulatory Compliance Validation
+* Product Claim Verification
+* Financial Content Auditing
+* Healthcare Advertisement Review
+* Marketing Campaign Governance
+
+---
+
 ## 🧠 Core AI Concepts Demonstrated
 
 * Retrieval-Augmented Generation (RAG)
@@ -151,18 +224,6 @@ The system generates a structured compliance report highlighting detected violat
 * Workflow Orchestration
 * LLM Evaluation
 * AI Observability
-
----
-
-## 📈 Future Enhancements
-
-* React Frontend Dashboard
-* Multi-Language Compliance Auditing
-* Real-Time Video Monitoring
-* Human-in-the-Loop Review System
-* Batch Video Processing
-* Full Azure Cloud Deployment
-* Compliance Analytics Dashboard
 
 ---
 
@@ -181,13 +242,29 @@ The system generates a structured compliance report highlighting detected violat
 
 ---
 
+## 📈 Future Enhancements
+
+* React Frontend Dashboard
+* Human-in-the-Loop Review System
+* Multi-Language Compliance Auditing
+* Real-Time Video Monitoring
+* Batch Video Processing
+* Advanced OCR Pipelines
+* Compliance Analytics Dashboard
+* Full Azure Cloud Deployment
+
+---
+
 ## 👩‍💻 Author
 
 ### Pranali Dayanand Misal
 
-B.Tech – Electronics & Telecommunication Engineering
+**B.Tech – Electronics & Telecommunication Engineering**
 Vishwakarma Institute of Information Technology (VIIT), Pune
 
 Aspiring AI Engineer | Generative AI Engineer | Machine Learning Enthusiast
 
 GitHub: https://github.com/Pranali-2027
+
+---
+
